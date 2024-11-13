@@ -6,7 +6,9 @@ import com.example.authapi.dtos.RegisterUserDto;
 import com.example.authapi.responses.LoginResponse;
 import com.example.authapi.services.AuthenticationService;
 import com.example.authapi.services.JwtService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +29,10 @@ public class AuthenticationController {
     @PostMapping("/signup")
     public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto) {
         User registeredUser = authenticationService.signup(registerUserDto);
-
-        return ResponseEntity.ok(registeredUser);
+        if (registeredUser == null) {
+            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(registeredUser);
     }
 
     @PostMapping("/login")
@@ -44,5 +48,9 @@ public class AuthenticationController {
         loginResponse.setExpiresIN(jwtService.getExpirationTime());
 
         return ResponseEntity.ok(loginResponse);
+    }
+    @GetMapping ("/secret")
+    public String getSecret() {
+        return authenticationService.getSecret();
     }
 }

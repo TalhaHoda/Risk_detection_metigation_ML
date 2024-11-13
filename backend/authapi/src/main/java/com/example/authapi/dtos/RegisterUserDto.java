@@ -5,6 +5,9 @@ public class RegisterUserDto {
     private String email;
     private String password;
     private String fullName;
+    private String secret;
+
+    private String totp;
 
     public String getEmail() {
         return email;
@@ -30,4 +33,18 @@ public class RegisterUserDto {
         this.fullName = fullName;
     }
 
+    public String getSecret() {
+        return secret;
+    }
+
+    public void setSecret(String secret) {
+        this.secret = secret;
+    }
+    public String getTotp() {
+        return totp;
+    }
+
+    public void setTotp(String totp) {
+        this.totp = totp;
+    }
 }
