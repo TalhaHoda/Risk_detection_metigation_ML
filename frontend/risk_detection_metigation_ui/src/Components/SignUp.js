@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import QRCode from 'react-qr-code';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
-import './SignUp.css';
+
 
 const SignUp = () => {
     const [formData, setFormData] = useState({
