@@ -1,0 +1,116 @@
+/* SignUp.css */
+.signup-container {
+    max-width: 400px; /* Further reduced max-width */
+    margin: 30px auto; /* Adjusted margin */
+    padding: 15px; /* Adjusted padding */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+}
+
+.signup-form {
+    padding: 10px; /* Further reduced padding */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 10px; /* Further reduced margin */
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    padding: 8px; /* Reduced padding */
+    font-size: 12px; /* Further reduced font-size */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.qr-code-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px; /* Adjusted margin */
+    height: 80px; /* Further reduced height */
+    width: 80px; /* Further reduced width */
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px; /* Adjusted margin */
+}
+
+.btn-add-extra,
+.btn-signup,
+.btn-login {
+    padding: 8px; /* Reduced padding */
+    font-size: 12px; /* Further reduced font-size */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 300px; /* Further adjusted max-width */
+}
+
+.btn-add-extra:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.login-prompt {
+    text-align: center;
+    margin-top: 10px; /* Adjusted margin */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .signup-container {
+        padding: 10px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+        font-size: 10px; /* Further reduced font-size */
+    }
+
+    .btn-add-extra,
+    .btn-signup,
+    .btn-login {
+        font-size: 10px; /* Further reduced font-size */
+        padding: 6px; /* Further reduced padding */
+    }
+
+    h4, h5 {
+        font-size: 12px; /* Further reduced font-size */
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-add-extra,
+    .btn-signup,
+    .btn-login {
+        max-width: 100%;
+    }
+
+    h4, h5 {
+        font-size: 10px; /* Further reduced font-size */
+    }
+}

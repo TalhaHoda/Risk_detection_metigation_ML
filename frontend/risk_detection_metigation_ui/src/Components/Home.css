@@ -1,0 +1,31 @@
+/* Home.css */
+.home-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.home-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.home-container p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.btn-logout {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+}

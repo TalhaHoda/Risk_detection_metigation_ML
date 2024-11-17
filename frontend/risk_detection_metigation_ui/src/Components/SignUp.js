@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import QRCode from 'react-qr-code';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
+import './SignUp.css'; // Import the CSS file
 
-
-const SignUp = () => {
+function SignUp() {
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -27,7 +27,6 @@ const SignUp = () => {
 
     const handleExtraFieldChange = (index, e) => {
         const newExtraFields = [...extraFields];
-        //newExtraFields[index].value = e.target.value;
         formData.totp = e.target.value;
         setExtraFields(newExtraFields);
     };
@@ -42,7 +41,7 @@ const SignUp = () => {
             formData.secret = secret;
             const otpauthUrl = `otpauth://totp/Example:${formData.email}?secret=${secret}&issuer=Example`;
             console.log(response);
-            console.log("my secret "+secret);
+            console.log("my secret " + secret);
             console.log(otpauthUrl);
             const newField = { value: secret, otpauthUrl };
             setExtraFields([...extraFields, newField]);
@@ -63,7 +62,7 @@ const SignUp = () => {
         } catch (error) {
             console.error('Error submitting form data:', error);
         }
-        console.log(formData)
+        console.log(formData);
     };
 
     const handleLogin = (e) => {
@@ -77,54 +76,72 @@ const SignUp = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Full Name:</label>
-                    <input
-                        type="text"
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                    />
-                </div>
-                {extraFields.map((field, index) => (
-                    <div key={index}>
-                        <label>TOTP:</label>
-                        <input
-                            type="text"
-                            name="totp"
-                            value={formData.value}
-                            onChange={(e) => handleExtraFieldChange(index, e)}
-                        />
-                        <QRCode value={field.otpauthUrl} />
-                    </div>
-                ))}
-                <button type="button" onClick={addExtraField} disabled={isButtonDisabled}>Add Extra Field</button>
-                <button type="submit">Sign up</button>
-            </form>
-            <h6>Already have an account</h6>
-            <button onClick={handleLogin}>Log In</button>
+        <div className="signup-container">
+    <form className="signup-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+            <label htmlFor="fullName">Full Name:</label>
+            <input
+                type="text"
+                name="fullName"
+                id="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
+                required
+            />
         </div>
+        <div className="form-group">
+            <label htmlFor="email">Email:</label>
+            <input
+                type="email"
+                name="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+            />
+        </div>
+        <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <input
+                type="password"
+                name="password"
+                id="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+            />
+        </div>
+        {extraFields.map((field, index) => (
+            <div className="form-group" key={index}>
+                <label htmlFor={`totp-${index}`}>TOTP:</label>
+                <input
+                    type="text"
+                    name="totp"
+                    id={`totp-${index}`}
+                    value={formData.value}
+                    onChange={(e) => handleExtraFieldChange(index, e)}
+                />
+                <div className="qr-code-container">
+                    <QRCode value={field.otpauthUrl} />
+                </div>
+            </div>
+        ))}
+        <div className='button-group'>
+        <button type="button" className="btn-add-extra" onClick={addExtraField} disabled={isButtonDisabled}>NEXT</button>
+        </div>
+        <div className='button-group'>
+        <button type="submit" className="btn-signup">Sign up</button>
+        </div>
+       
+    </form>
+    <h6 className="login-prompt">Already have an account</h6>
+    <div className='button-group'>
+    <button className="btn-login" onClick={handleLogin}>Log In</button>
+    </div>
+    
+</div>
+
     );
-};
+}
 
 export default SignUp;

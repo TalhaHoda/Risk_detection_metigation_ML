@@ -1,0 +1,151 @@
+/* Login.css */
+.login-container {
+    max-width: 450px; /* Reduced max-width */
+    margin: 40px auto; /* Adjusted margin */
+    padding: 15px; /* Adjusted padding */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+}
+
+.login-form {
+    padding: 15px; /* Adjusted padding */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="text"] { /* Added TOTP field styling */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px; /* Reduced padding */
+    font-size: 14px; /* Reduced font-size */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px; /* Adjusted margin */
+}
+
+.btn-login,
+.btn-signup {
+    padding: 8px; /* Reduced padding */
+    font-size: 14px; /* Reduced font-size */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 320px; /* Adjusted max-width */
+}
+
+h4, h5 {
+    text-align: center;
+    margin-top: 15px; /* Adjusted margin */
+}
+
+.success-message {
+    color: green;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.totp-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.totp-popup .form-group {
+    margin-bottom: 10px;
+}
+
+.totp-popup .form-group label {
+    font-weight: bold;
+}
+
+.totp-popup .form-group input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.totp-popup .button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 10px;
+    }
+
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group input[type="text"] {
+        font-size: 12px;
+    }
+
+    .btn-login,
+    .btn-signup {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    h4, h5 {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-login,
+    .btn-signup {
+        max-width: 100%;
+    }
+
+    h4, h5 {
+        font-size: 12px;
+    }
+}
