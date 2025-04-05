@@ -8,7 +8,11 @@ import com.example.authapi.services.AuthenticationService;
 import com.example.authapi.services.JwtService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
 
 @RequestMapping("/auth")
 @RestController
@@ -36,13 +40,13 @@ public class AuthenticationController {
     public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginUserDto loginUserDto) {
         try {
             // Authenticate the user and validate TOTP, then generate JWT token
-            String jwtToken = String.valueOf(authenticationService.authenticate(loginUserDto));
+            User user = authenticationService.authenticate(loginUserDto);
+            //As Authentication Successful we will generate and return JWT token to the end user.
 
             // Prepare the login response
             LoginResponse loginResponse = new LoginResponse();
-            loginResponse.setToken(jwtToken);
+            loginResponse.setToken(jwtService.generateToken(user));
             loginResponse.setExpiresIN(jwtService.getExpirationTime());
-
             return ResponseEntity.ok(loginResponse);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
