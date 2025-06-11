@@ -1,21 +1,23 @@
-import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import SignUp from "./Components/SignUp";
-import Login from "./Components/Login";
-import Home from "./Components/Home"; // Your home component
-import Logout from "./Components/Logout"; // Import the Logout component
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import SimpleLogin from './Components/SimpleLogin';
+import TotpLogin from './Components/TotpLogin';
+import SignUp from './Components/SignUp';
+import Home from './Components/Home';
 
 function App() {
-    return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/logout" element={<Logout />} /> {/* Add Logout route */}
-            </Routes>
-        </Router>
-    );
+  return (
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} /> {/* Your protected home page */}
+          <Route path="/login-simple" element={<SimpleLogin />} /> {/* Initial login page */}
+          <Route path="/login-totp" element={<TotpLogin />} />       {/* TOTP login page (changed path for clarity) */}
+          <Route path="/signup" element={<SignUp />} />     {/* Sign up page */}
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
 export default App;

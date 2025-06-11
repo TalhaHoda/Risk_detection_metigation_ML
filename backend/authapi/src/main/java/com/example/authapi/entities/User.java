@@ -30,6 +30,10 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String secret;
 
+    // New field to store user-specific ML model data (e.g., pattern memory as JSON string)
+    @Column(columnDefinition = "TEXT") // Use TEXT type for potentially long JSON strings
+    private String mlModelData;
+
     @UpdateTimestamp
     @Column(updatable = false, name = "created_at")
     private Date createdAt;
@@ -123,5 +127,13 @@ public class User implements UserDetails {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getMlModelData() {
+        return mlModelData;
+    }
+
+    public void setMlModelData(String mlModelData) {
+        this.mlModelData = mlModelData;
     }
 }
